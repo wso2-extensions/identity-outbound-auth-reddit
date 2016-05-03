@@ -31,6 +31,9 @@ import org.apache.oltu.oauth2.common.exception.OAuthSystemException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * RedditOauthClient class for add Basic Oauth in accessToken request
+ */
 public class RedditOauthClient extends OAuthClient {
     private String clientId;
     private String clientSecret;

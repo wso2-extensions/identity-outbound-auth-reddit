@@ -266,7 +266,6 @@ public class RedditAuthenticator extends OpenIDConnectAuthenticator implements F
     public List<Property> getConfigurationProperties() {
 
         List<Property> configProperties = new ArrayList<>();
-        //Add your configuration properties
 
         Property clientId = new Property();
         clientId.setName(OIDCAuthenticatorConstants.CLIENT_ID);
