@@ -134,6 +134,13 @@
             <version>${wso2.json}</version>
         </dependency>
     </dependencies>
+    <scm>
+        <connection>scm:git:https://github.com/wso2-extensions/identity-outbound-auth-reddit.git</connection>
+        <url>https://github.com/wso2-extensions/identity-outbound-auth-reddit.git</url>
+        <developerConnection>scm:git:https://github.com/wso2-extensions/identity-outbound-auth-reddit.git
+        </developerConnection>
+        <tag>HEAD</tag>
+    </scm>
     <build>
         <extensions>
             <extension>
