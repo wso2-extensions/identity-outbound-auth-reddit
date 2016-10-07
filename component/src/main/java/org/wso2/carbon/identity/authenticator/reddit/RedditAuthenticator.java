@@ -56,6 +56,7 @@ import java.util.Map;
 
 /**
  * Authenticator of Reddit
+ * @since 1.0.1
  */
 public class RedditAuthenticator extends OpenIDConnectAuthenticator implements FederatedApplicationAuthenticator {
 
@@ -119,7 +120,6 @@ public class RedditAuthenticator extends OpenIDConnectAuthenticator implements F
         }
         return scope;
     }
-
 
     /**
      * check and process the httpServletRequest to process.
@@ -264,12 +264,11 @@ public class RedditAuthenticator extends OpenIDConnectAuthenticator implements F
      */
     @Override
     public List<Property> getConfigurationProperties() {
-
         List<Property> configProperties = new ArrayList<>();
 
         Property clientId = new Property();
         clientId.setName(OIDCAuthenticatorConstants.CLIENT_ID);
-        clientId.setDisplayName("Client Id");
+        clientId.setDisplayName(RedditAuthenticatorConstants.REDDIT_CLIENT_ID);
         clientId.setRequired(true);
         clientId.setDescription("Enter Reddit  client identifier value");
         clientId.setDisplayOrder(1);
@@ -277,7 +276,7 @@ public class RedditAuthenticator extends OpenIDConnectAuthenticator implements F
 
         Property clientSecret = new Property();
         clientSecret.setName(OIDCAuthenticatorConstants.CLIENT_SECRET);
-        clientSecret.setDisplayName("Client Secret");
+        clientSecret.setDisplayName(RedditAuthenticatorConstants.REDDIT_CLIENT_SECRET);
         clientSecret.setRequired(true);
         clientSecret.setConfidential(true);
         clientSecret.setDescription("Enter Reddit client secret value");
@@ -285,7 +284,7 @@ public class RedditAuthenticator extends OpenIDConnectAuthenticator implements F
         configProperties.add(clientSecret);
 
         Property callbackUrl = new Property();
-        callbackUrl.setDisplayName("Callback URL");
+        callbackUrl.setDisplayName(RedditAuthenticatorConstants.REDDIT_CALLBACK_URL);
         callbackUrl.setName(IdentityApplicationConstants.OAuth2.CALLBACK_URL);
         callbackUrl.setDescription("Enter value corresponding to callback url.");
         callbackUrl.setDisplayOrder(3);
@@ -293,4 +292,3 @@ public class RedditAuthenticator extends OpenIDConnectAuthenticator implements F
         return configProperties;
     }
 }
-
