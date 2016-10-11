@@ -45,7 +45,7 @@ public class RedditAuthenticatorConstants {
     //Reddit Basic Authorization
     public static final String AUTHORIZATION_BASIC = "Basic ";
     //Reddit contentType
-    public static final String CONTENT_TYPE = "Content-Type ";
+    public static final String CONTENT_TYPE = "Content-Type";
     //Reddit json contentType
     public static final String CONTENT_TYPE_JSON = "application/json";
     //Request_host_header
@@ -58,4 +58,10 @@ public class RedditAuthenticatorConstants {
     public static final String REDDIT_USER_AGENT = "User-Agent";
     //Reddit value for User_Agent header
     public static final String USER_AGENT = "USER_AGENT";
+    //Reddit value for Client id
+    public static final String REDDIT_CLIENT_ID = "Client Id";
+    //Reddit value for Client secret
+    public static final String REDDIT_CLIENT_SECRET = "Client Secret";
+    //Reddit value for Callback_url
+    public static final String REDDIT_CALLBACK_URL = "Callback URL";
 }
