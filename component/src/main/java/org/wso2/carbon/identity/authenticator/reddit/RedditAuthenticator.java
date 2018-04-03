@@ -34,6 +34,7 @@ import org.apache.oltu.oauth2.common.utils.JSONUtils;
 import org.wso2.carbon.identity.application.authentication.framework.FederatedApplicationAuthenticator;
 import org.wso2.carbon.identity.application.authentication.framework.context.AuthenticationContext;
 import org.wso2.carbon.identity.application.authentication.framework.exception.AuthenticationFailedException;
+import org.wso2.carbon.identity.application.authentication.framework.exception.InvalidCredentialsException;
 import org.wso2.carbon.identity.application.authentication.framework.model.AuthenticatedUser;
 import org.wso2.carbon.identity.application.authenticator.oidc.OIDCAuthenticatorConstants;
 import org.wso2.carbon.identity.application.authenticator.oidc.OpenIDConnectAuthenticator;
@@ -128,7 +129,29 @@ public class RedditAuthenticator extends OpenIDConnectAuthenticator implements F
      * @return weather true or false
      */
     public boolean canHandle(HttpServletRequest httpServletRequest) {
-        return httpServletRequest.getParameter(RedditAuthenticatorConstants.CODE) != null;
+        return httpServletRequest.getParameter(RedditAuthenticatorConstants.CODE) != null || httpServletRequest
+                .getParameter(RedditAuthenticatorConstants.OAUTH2_PARAM_ERROR)!=null;
+    }
+
+    /**
+     * Handle error response when unauthorized the registered app.
+     *
+     * @param request httpServletRequest
+     * @throws InvalidCredentialsException
+     */
+    private void handleErrorResponse(HttpServletRequest request) throws InvalidCredentialsException {
+        if (request.getParameter(RedditAuthenticatorConstants.OAUTH2_PARAM_ERROR) != null) {
+            StringBuilder errorMessage = new StringBuilder();
+            String error = request.getParameter(RedditAuthenticatorConstants.OAUTH2_PARAM_ERROR);
+            String state = request.getParameter(OIDCAuthenticatorConstants.OAUTH2_PARAM_STATE);
+            errorMessage.append(RedditAuthenticatorConstants.ERROR).append(error)
+                    .append(RedditAuthenticatorConstants.STATE).append(state);
+            if (log.isDebugEnabled()) {
+                log.debug("Failed to authenticate via reddit when unauthorized the registered app. " +
+                        errorMessage.toString());
+            }
+            throw new InvalidCredentialsException(errorMessage.toString());
+        }
     }
 
     /**
@@ -138,6 +161,7 @@ public class RedditAuthenticator extends OpenIDConnectAuthenticator implements F
     protected void processAuthenticationResponse(HttpServletRequest request, HttpServletResponse response,
                                                  AuthenticationContext context) throws AuthenticationFailedException {
         try {
+            handleErrorResponse(request);
             Map<String, String> authenticatorProperties = context.getAuthenticatorProperties();
             String clientId = authenticatorProperties.get(OIDCAuthenticatorConstants.CLIENT_ID);
             String clientSecret = authenticatorProperties.get(OIDCAuthenticatorConstants.CLIENT_SECRET);

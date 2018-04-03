@@ -64,4 +64,7 @@ public class RedditAuthenticatorConstants {
     public static final String REDDIT_CLIENT_SECRET = "Client Secret";
     //Reddit value for Callback_url
     public static final String REDDIT_CALLBACK_URL = "Callback URL";
+    public static final String OAUTH2_PARAM_ERROR = "error";
+    public static final String ERROR = "error: ";
+    public static final String STATE = ", state: ";
 }
