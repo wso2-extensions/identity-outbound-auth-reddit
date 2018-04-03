@@ -130,7 +130,7 @@ public class RedditAuthenticator extends OpenIDConnectAuthenticator implements F
      */
     public boolean canHandle(HttpServletRequest httpServletRequest) {
         return httpServletRequest.getParameter(RedditAuthenticatorConstants.CODE) != null || httpServletRequest
-                .getParameter(RedditAuthenticatorConstants.OAUTH2_PARAM_ERROR)!=null;
+                .getParameter(RedditAuthenticatorConstants.OAUTH2_PARAM_ERROR) != null;
     }
 
     /**
@@ -147,8 +147,8 @@ public class RedditAuthenticator extends OpenIDConnectAuthenticator implements F
             errorMessage.append(RedditAuthenticatorConstants.ERROR).append(error)
                     .append(RedditAuthenticatorConstants.STATE).append(state);
             if (log.isDebugEnabled()) {
-                log.debug("Failed to authenticate via reddit when unauthorized the registered app. " +
-                        errorMessage.toString());
+                log.debug("Failed to authenticate via Reddit when unauthorized the registered app : " + errorMessage
+                        .toString());
             }
             throw new InvalidCredentialsException(errorMessage.toString());
         }
