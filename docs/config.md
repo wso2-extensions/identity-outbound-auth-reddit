@@ -13,7 +13,7 @@ This is tested for the Reddit API version 1.0.
 * [Testing the sample](#testing-the-sample)
 
 ### Deploying Reddit artifacts
- * Download the WSO2 Identity Server from [here](wso2.com/products/identity-server/).
+ * Download the WSO2 Identity Server from [here](https://wso2.com/identity-and-access-management).
  * Download the Reddit authenticator from [here](https://store.wso2.com/store/assets/isconnector/details/45092602-8b7b-4f29-9d66-cc5b39990907) and add it to the <IS_HOME>/repository/components/dropins directory.
 
  >> NOTE :If you want to upgrade the Reddit Authenticator (.jar) in your existing IS pack, please refer [upgrade instructions](https://docs.wso2.com/display/ISCONNECTORS/Upgrading+an+Authenticator).
