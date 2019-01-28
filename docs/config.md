@@ -35,7 +35,7 @@ This is tested for the Reddit API version 1.0.
 
 ### Deploying [travelocity.com](https://www.travelocity.com/) Sample App
     
-   The next step is to [deploy the sample app](https://docs.wso2.com/display/ISCONNECTORS/Deploying+the+Sample+App) in order to use it in this scenario.
+   The next step is to [deploy the sample app](sampleApp.md) in order to use it in this scenario.
 
    Once this is done, the next step is to configure the WSO2 Identity Server by adding a [service provider](https://docs.wso2.com/display/IS530/Adding+and+Configuring+a+Service+Provider) and an [identity provider](https://docs.wso2.com/display/IS530/Adding+and+Configuring+an+Identity+Provider).
 
