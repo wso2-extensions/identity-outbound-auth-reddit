@@ -113,7 +113,7 @@ You have now added and configured the service provider.
 ### Testing the sample
  
  1. To test the sample, go to the following URL: http://<TOMCAT_HOST>:<TOMCAT_PORT>/travelocity.com/index.jsp . E.g., http://localhost:8080/travelocity.com
- 2. Login with SAML from the WSO2 Identity Server.
+ 2. Login with SAML(Redirect binding) from the WSO2 Identity Server.
 
     ![alt text](images/travelocity.png)
  3. Enter your Reddit credentials in the prompted login page of Reddit. Once you log in successfully you will be taken to the home page of the travelocity.com app.
