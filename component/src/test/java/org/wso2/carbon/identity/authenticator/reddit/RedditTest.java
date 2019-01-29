@@ -133,8 +133,7 @@ public class RedditTest {
     }
 
     @Test(description = "Test case for getScope method", dataProvider = "authenticatorProperties")
-    public void testGetScope(
-            Map<String, String> authenticatorProperties) {
+    public void testGetScope(Map<String, String> authenticatorProperties) {
 
         Assert.assertEquals(RedditAuthenticatorConstants.USER_SCOPE,
                 redditAuthenticator.getScope("scope", authenticatorProperties));
