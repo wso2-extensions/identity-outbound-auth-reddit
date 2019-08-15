@@ -32,7 +32,7 @@ import java.util.Hashtable;
  */
 public class RedditAuthenticatorServiceComponent {
 
-    private static Log log = LogFactory.getLog(RedditAuthenticatorServiceComponent.class);
+    private static final Log log = LogFactory.getLog(RedditAuthenticatorServiceComponent.class);
 
     protected void activate(ComponentContext ctxt) {
         try {
