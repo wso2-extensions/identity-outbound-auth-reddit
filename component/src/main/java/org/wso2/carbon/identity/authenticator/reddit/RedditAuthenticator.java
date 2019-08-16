@@ -61,7 +61,7 @@ import java.util.Map;
  */
 public class RedditAuthenticator extends OpenIDConnectAuthenticator implements FederatedApplicationAuthenticator {
 
-    private static Log log = LogFactory.getLog(RedditAuthenticator.class);
+    private static final Log log = LogFactory.getLog(RedditAuthenticator.class);
 
     /**
      * Get Reddit authorization endpoint.
