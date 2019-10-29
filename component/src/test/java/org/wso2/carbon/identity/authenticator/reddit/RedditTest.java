@@ -1,3 +1,20 @@
+/*
+ * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ *  WSO2 Inc. licenses this file to you under the Apache License,
+ *  Version 2.0 (the "License"); you may not use this file except
+ *  in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing,
+ *  software distributed under the License is distributed on an
+ *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ *  KIND, either express or implied.  See the License for the
+ *  specific language governing permissions and limitations
+ *  under the License.
+ */
 package org.wso2.carbon.identity.authenticator.reddit;
 
 import org.apache.oltu.oauth2.client.OAuthClient;
@@ -37,8 +54,7 @@ import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 @RunWith(PowerMockRunner.class)
-@PrepareForTest({OAuthAuthzResponse.class, AuthenticatedUser.class,
-        OAuthClientRequest.class, URL.class})
+@PrepareForTest({OAuthAuthzResponse.class, AuthenticatedUser.class, OAuthClientRequest.class, URL.class})
 public class RedditTest {
 
     @Mock
@@ -89,24 +105,21 @@ public class RedditTest {
     }
 
     @Test(description = "Test case for getTokenEndpoint method", dataProvider = "authenticatorProperties")
-    public void testGetTokenEndpoint(
-            Map<String, String> authenticatorProperties) {
+    public void testGetTokenEndpoint(Map<String, String> authenticatorProperties) {
 
         String tokenEndpoint = redditAuthenticator.getTokenEndpoint(authenticatorProperties);
         Assert.assertEquals(RedditAuthenticatorConstants.REDDIT_TOKEN_ENDPOINT, tokenEndpoint);
     }
 
     @Test(description = "Test case for getUserInfoEndpoint method", dataProvider = "authenticatorProperties")
-    public void testGetUserInfoEndpoint(
-            Map<String, String> authenticatorProperties) {
+    public void testGetUserInfoEndpoint(Map<String, String> authenticatorProperties) {
 
         String tokenEndpoint = redditAuthenticator.getUserInfoEndpoint(oAuthClientResponse, authenticatorProperties);
         Assert.assertEquals(RedditAuthenticatorConstants.REDDIT_USERINFO_ENDPOINT, tokenEndpoint);
     }
 
     @Test(description = "Test case for requiredIDToken method", dataProvider = "authenticatorProperties")
-    public void testRequiredIDToken(
-            Map<String, String> authenticatorProperties) {
+    public void testRequiredIDToken(Map<String, String> authenticatorProperties) {
 
         Assert.assertFalse(redditAuthenticator.requiredIDToken(authenticatorProperties));
     }
@@ -119,8 +132,7 @@ public class RedditTest {
     }
 
     @Test(description = "Test case for getAuthorizationServerEndpoint method", dataProvider = "authenticatorProperties")
-    public void testGetAuthorizationServerEndpoint(
-            Map<String, String> authenticatorProperties) {
+    public void testGetAuthorizationServerEndpoint(Map<String, String> authenticatorProperties) {
 
         Assert.assertEquals(RedditAuthenticatorConstants.REDDIT_OAUTH_ENDPOINT,
                 redditAuthenticator.getAuthorizationServerEndpoint(authenticatorProperties));
@@ -158,17 +170,15 @@ public class RedditTest {
     }
 
     @Test(expectedExceptions = AuthenticationFailedException.class, description = "Test case for processAuthenticationResponse", dataProvider = "authenticatorProperties")
-    public void testProcessAuthenticationResponse(
-            Map<String, String> authenticatorProperties) throws Exception {
+    public void testProcessAuthenticationResponse(Map<String, String> authenticatorProperties) throws Exception {
 
         RedditAuthenticator spyAuthenticator = PowerMockito.spy(new RedditAuthenticator());
         PowerMockito.mockStatic(OAuthAuthzResponse.class);
         when(OAuthAuthzResponse.oauthCodeAuthzResponse(Mockito.any(HttpServletRequest.class)))
                 .thenReturn(mockOAuthAuthzResponse);
-        when(oAuthClientResponse.getParam(OIDCAuthenticatorConstants.ACCESS_TOKEN))
-                .thenReturn("test-token");
-        PowerMockito.doReturn("{\"token\":\"test-token\",\"id\":\"testuser\"}")
-                .when(spyAuthenticator, "sendRequest", Mockito.anyString(), Mockito.anyString());
+        when(oAuthClientResponse.getParam(OIDCAuthenticatorConstants.ACCESS_TOKEN)).thenReturn("test-token");
+        PowerMockito.doReturn("{\"token\":\"test-token\",\"id\":\"testuser\"}").when(spyAuthenticator, "sendRequest",
+                Mockito.anyString(), Mockito.anyString());
         PowerMockito.mockStatic(AuthenticatedUser.class);
         when(AuthenticatedUser.createFederateAuthenticatedUserFromSubjectIdentifier(Mockito.anyString()))
                 .thenReturn(authenticatedUser);
@@ -194,7 +204,8 @@ public class RedditTest {
     public OAuthClientResponse GetOauthResponse(OAuthClient mockOAuthClient, OAuthClientRequest mockOAuthClientRequest) throws Exception {
 
         Mockito.when(mockOAuthClient.accessToken(mockOAuthClientRequest)).thenReturn(oAuthJSONAccessTokenResponse);
-        OAuthClientResponse oAuthClientResponse = Whitebox.invokeMethod(redditAuthenticator, "getOauthResponse", mockOAuthClient, mockOAuthClientRequest);
+        OAuthClientResponse oAuthClientResponse = Whitebox.invokeMethod(redditAuthenticator, "getOauthResponse",
+                mockOAuthClient, mockOAuthClientRequest);
         return oAuthClientResponse;
     }
 }
