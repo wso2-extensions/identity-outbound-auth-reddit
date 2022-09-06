@@ -62,7 +62,7 @@ Now you have to configure WSO2 Identity Server by adding a [new identity provide
             c . Relaunch Chrome.
  2. Import that certificate into the IS client keystore.
 
-    keytool -importcert -file <certificate file> -keystore <IS>/repository/resources/security/client-truststore.jks -alias "Reddit"
+    keytool -importcert -file <certificate_file> -keystore <IS>/repository/resources/security/client-truststore.jks -alias "Reddit"
 
     ```
     The default password of the client-truststore.jks is "wso2carbon".
