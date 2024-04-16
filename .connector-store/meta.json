@@ -1,0 +1,12 @@
+{
+    "name": "Reddit",
+    "owner": "WSO2",
+    "category": "Federated authenticator",
+    "documentationUrl": "https://github.com/wso2-extensions/identity-outbound-auth-reddit/tree/v1.0.2/docs",
+    "description": "The Reddit authenticator allows you to authenticate a user using Reddit through the WSO2 Identity Server. Reddit is a platform for creating communities, and is made up of thousands of active communities (known as \"subreddits\"), which are devoted to all sorts of different topics and are created and maintained by regular users.",
+    "status": "Active",
+    "labels": [
+        "SocialLogin"
+    ],
+    "releases": []
+}
